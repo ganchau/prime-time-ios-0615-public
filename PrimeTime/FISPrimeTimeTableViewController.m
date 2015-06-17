@@ -24,45 +24,58 @@
 
 - (NSInteger)primeNumber:(NSInteger)prime
 {
-    while (self.primes.count < prime) {
-//        NSUInteger evenlyDivisibleNumber = 0;
-//        for (NSUInteger i = 2; i <= potentialPrime; i++) {
-//            if (potentialPrime % i == 0) {
-//                evenlyDivisibleNumber++;
-//            }
-//            if (evenlyDivisibleNumber > 1) {
-//                break;
-//            }
-//        }
-        
-        for (NSUInteger i = 2; i <= self.potentialPrime; i++) {
-            if (self.potentialPrime % i == 0) {
-                if (i != self.potentialPrime) {
-                    break;
-                } else {
-                    [self.primes addObject:@(self.potentialPrime)];
+//    self.potentialPrime = 2;
+//    self.primes = [@[] mutableCopy];
+    
+    if (self.primes.count < prime) {
+    
+        while (self.primes.count < prime) {
+            //        NSUInteger evenlyDivisibleNumber = 0;
+            //        for (NSUInteger i = 2; i <= potentialPrime; i++) {
+            //            if (potentialPrime % i == 0) {
+            //                evenlyDivisibleNumber++;
+            //            }
+            //            if (evenlyDivisibleNumber > 1) {
+            //                break;
+            //            }
+            //        }
+            
+            for (NSUInteger i = 2; i <= self.potentialPrime; i++) {
+                if (self.potentialPrime % i == 0) {
+                    if (i != self.potentialPrime) {
+                        break;
+                    } else {
+                        [self.primes addObject:@(self.potentialPrime)];
+                    }
                 }
             }
+            self.potentialPrime++;
+            
+            //        NSUInteger evenlyDivisibleNumber = 0;
+            //        NSUInteger i = 2;
+            //        while (i <= self.potentialPrime && evenlyDivisibleNumber <= 1) {
+            //            if (self.potentialPrime % i == 0) {
+            //                evenlyDivisibleNumber++;
+            //                i++;
+            //            }
+            //        }
+            //        
+            //        
+            //        
+            //        if (evenlyDivisibleNumber == 1) {
+            //            [self.primes addObject:@(self.potentialPrime)];
+            //        }
+            //        self.potentialPrime++;
         }
-        self.potentialPrime++;
-
-//        NSUInteger i = 2;
-//        while (i <= potentialPrime && evenlyDivisibleNumber <= 1) {
-//            if (potentialPrime % i == 0) {
-//                evenlyDivisibleNumber++;
-//                i++;
-//            }
-//        }
+        NSInteger foundPrime = [[self.primes lastObject] integerValue];
+        NSLog(@"%ld", foundPrime);
         
+        return foundPrime;
+    } else {
+        NSInteger foundPrime = [self.primes[prime - 1] integerValue];
         
-        
-//        if (evenlyDivisibleNumber == 1) {
-//            [primes addObject:@(potentialPrime)];
-//        }
-//        potentialPrime++;
+        return foundPrime;
     }
-
-    return [[self.primes lastObject] integerValue];
 }
 
 - (void)viewDidLoad {
@@ -93,7 +106,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 5000;
+    return 100;
 }
 
 
@@ -104,6 +117,8 @@
     NSInteger primeth = indexPath.row + 2001;
     NSInteger primeNumber = [self primeNumber:primeth];
     cell.textLabel.text = [NSString stringWithFormat:@"%ld", primeNumber];
+    
+
     
     return cell;
 }
