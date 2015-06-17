@@ -11,7 +11,7 @@
 @interface FISPrimeTimeTableViewController ()
 
 @property (strong, nonatomic) NSMutableArray *primes;  // stores the prime numbers
-@property (nonatomic) NSUInteger potentialPrime;       
+@property (nonatomic) NSUInteger potentialPrime;
 
 @end
 
@@ -93,7 +93,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 100;
+    return 5000;
 }
 
 
@@ -101,7 +101,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"primeCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    NSInteger primeth = indexPath.row + 1;
+    NSInteger primeth = indexPath.row + 2001;
     NSInteger primeNumber = [self primeNumber:primeth];
     cell.textLabel.text = [NSString stringWithFormat:@"%ld", primeNumber];
     
